@@ -87,6 +87,10 @@ Tests in vinitd covering network and operating system settings. Therefore they n
 
 **make fulltest**: Runs the above steps in one step. This is for travis CI where the two step process is not necessary.
 
+### Debugging
+
+vinitd is by default built with `CGO_LDFLAGS="-static -w -s"`, i.e. a static binary, with no DWARF debugging info, and no symbol table (see `go tool link` for more flag info). You may want to remove the `-w` and -`s` flags if you need to e.g. debug a segfault. (Beware also that when using the vbundler build process, it may also strip the built binary - see vinitd Makefile in [vbundler](ttps://github.com/vorteil/vbundler)).
+
 ### Code of Conduct
 
 We have adopted the [Contributor Covenant](https://github.com/vorteil/.github/blob/master/CODE_OF_CONDUCT.md) code of conduct.
